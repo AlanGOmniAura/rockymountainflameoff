@@ -1,0 +1,137 @@
+.section {
+    background: transparent;
+    color: #fff;
+    padding: 4rem 0;
+    position: relative; // Context for absolute overlays
+}
+
+.parallaxWrapper {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; // THE MAGIC "SCROLL OVER" EFFECT
+
+    // Ensure text pops
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75); // Dark overlay to make text readable
+        z-index: 0;
+    }
+
+    > * {
+        position: relative;
+        z-index: 1; // Lift content above overlay
+    }
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @media (min-width: 900px) {
+        flex-direction: row;
+        gap: 5%;
+    }
+}
+
+.imageWrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; // Standard: Align Left
+    overflow: visible !important; // Prevent clipping of the offset box
+    position: relative; // Context
+    z-index: 1;
+
+    .projectImage {
+        position: relative; // Required for z-index to work
+        border-radius: 4px;
+        z-index: 2; // Sit above the accent
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+
+        // Direct Glow on Image
+        box-shadow: 0 0 50px 15px rgba(255, 61, 0, 0.5);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+}
+
+// Global visual accent classes
+.accentFinal {
+    display: none; // Hiding separate rectangle per user request
+}
+
+.contentWrapper {
+    flex: 1;
+    text-align: left;
+
+    h2 {
+        color: #fff;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid transparent;
+    }
+
+    .subtitle {
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: 700; // Bold per client request
+        margin-bottom: 1.25rem;
+    }
+
+    p {
+        color: #ccc;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        white-space: pre-wrap;
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: #fff;
+    text-transform: uppercase;
+    font-family: var(--font-heading-family);
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+
+    &:hover {
+        background: transparent;
+        color: var(--primary);
+        border-color: var(--primary);
+    }
+}
+
+// Modifier for Image on Right
+.reversed {
+    @media (min-width: 900px) {
+        .inner {
+            flex-direction: row-reverse;
+        }
+
+        // Force Image to Align Right in Reversed Mode
+        .imageWrapper {
+            justify-content: flex-end;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+.hero {
+    height: 85vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.overlay {
+    // Legacy slider often had no overlay, or very light.
+    // page_8001 shows no overlay div in the slider code, just text on image.
+    // However, for readability we often add one. I will remove it to be "Identical" if text shadow handles it.
+    display: none;
+}
+
+.contentBox {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+
+    // Legacy Hero Wrap:
+    // <div class='hero-wrap'>
+    //    <h2>Title</h2>
+    //    <p>Subtitle</p>
+    //    <a class='cta'>Button</a>
+    // </div>
+    // Usually centered, white text, drop shadow.
+
+    h1 {
+        color: #fff;
+        font-size: 4rem; // Big headline
+        font-weight: 700;
+        text-transform: capitalize; // "Denver's Premier..."
+        line-height: 1.1;
+        margin-bottom: 0.2rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); // Readability without overlay
+
+        @media (max-width: 768px) {
+            font-size: 2.5rem;
+        }
+    }
+
+    p {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-weight: 400;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
+}
+
+.btn {
+    // Using global .cta style logic, but scoped here just in case
+    display: inline-block;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    padding: 12px 35px;
+    text-transform: uppercase;
+    font-family: var(--font-heading-family);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-shadow: none; // No shadow on button text
+
+    &:hover {
+        background: #fff;
+        color: #000;
+    }
+}

@@ -1,0 +1,103 @@
+@import '@/components/Section.module.scss';
+
+.contactPage {
+    padding-top: 8rem;
+    min-height: 100vh;
+    color: #fff;
+    background: #0a0a0b;
+    padding: 120px 0 60px;
+
+    .header {
+        text-align: center;
+        margin-bottom: 4rem;
+
+        h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading-family);
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 4%;
+
+        @media (min-width: 1024px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .infoSection {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .infoCard {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-5px);
+            }
+
+            h3 {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                font-size: 1.5rem;
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+                color: #fff;
+
+                svg {
+                    color: #fff; // Keeping it white and premium
+                }
+            }
+
+            p,
+            a {
+                font-size: 1.1rem;
+                color: #ccc;
+                line-height: 1.6;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+            a:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    .mapSection {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        height: 100%;
+        min-height: 400px;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(1) invert(0.9) contrast(1.2); // Custom Dark Map Look
+        }
+    }
+}

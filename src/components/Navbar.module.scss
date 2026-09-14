@@ -1,0 +1,203 @@
+.navbar {
+    background-color: rgba(0, 0, 0, 0.85); // Semi-transparent black
+    backdrop-filter: blur(10px); // Glass effect
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    // border-bottom: 2px solid #222; // Legacy
+    box-shadow: 0 4px 20px rgba(255, 61, 0, 0.15); // Premium Orange Glow
+}
+
+.headerInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 4%;
+    height: 110px; // Increased height for more breathing room
+}
+
+.logo {
+    display: block;
+    width: 70px; // Slightly larger on mobile
+    height: 70px;
+    position: relative;
+
+    @media (min-width: 1024px) {
+        width: 90px;
+        height: 90px;
+    }
+
+    img {
+        filter: invert(1) brightness(1.2); // Make white and extra bright
+        object-fit: contain;
+    }
+}
+
+.desktopNav {
+    display: none; // Hidden on mobile
+
+    @media (min-width: 1024px) {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: center; // Center alignment
+    }
+}
+
+.navWrapper {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px; // Add gap for spacing
+
+    li {
+        a {
+            display: block;
+            color: #fff;
+            text-transform: uppercase;
+            font-family: var(--font-heading-family);
+            font-weight: 700; // Bolder
+            letter-spacing: 1px;
+            font-size: 13px;
+            padding: 10px 15px; // Reduced vertical padding, rely on centering
+            opacity: 1; // Fully opaque (Brighter)
+            transition: all 0.3s ease;
+            border-radius: 4px;
+
+            &:hover {
+                color: #fff;
+                background: rgba(255, 255, 255, 0.15); // Stronger hover BG
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            }
+        }
+    }
+}
+
+.actionItem a {
+    border: 1px solid var(--primary);
+    padding: 8px 20px !important; // Override default nav padding
+    border-radius: 6px;
+    background: var(--primary);
+    margin-left: 10px;
+    font-weight: 700;
+    color: #fff !important;
+
+    &:hover {
+        background: transparent !important;
+        color: var(--primary) !important;
+        border-color: var(--primary);
+        text-shadow: none !important;
+        box-shadow: 0 0 15px rgba(255, 87, 34, 0.4); // Add glow on hover
+    }
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 25px; // Increased from 15px
+    margin-left: 30px; // More space from nav
+
+    a {
+        color: rgba(255, 255, 255, 1); // Fully white
+        transition: all 0.3s;
+        display: flex; // Ensure proper alignment
+        align-items: center;
+
+        &:hover {
+            color: #fff;
+            transform: scale(1.1); // subtle grow
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); // Glow effect
+        }
+    }
+}
+
+.mobileActions {
+    display: flex;
+    align-items: center;
+    gap: 8px; // Reduced gap to pull "Gift Cards" to the right (closer to Book Now)
+
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.mobileOutlineBtn {
+    color: white;
+    font-size: 11px; // Increased size
+    font-weight: 800; // Extra Bold
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    padding: 7px 12px; // More padding
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: var(--primary);
+        background: transparent;
+        color: var(--primary);
+    }
+}
+
+.mobileIcon {
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.menuBtn {
+    display: block;
+    cursor: pointer;
+    color: white;
+}
+
+.mobileNavOverlay {
+    position: absolute; // Not fixed full screen, contained within or relative
+    top: 90px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 2rem;
+    border-top: 1px solid #333;
+    z-index: 999;
+}
+
+.mobileNav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left; // Left aligned as requested
+
+    a {
+        color: #fff;
+        font-family: var(--font-heading-family);
+        text-transform: uppercase;
+        font-size: 1.1rem; // Standard size
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-underline-offset: 4px;
+        transition: all 0.3s;
+
+        &:hover {
+            color: var(--primary);
+            text-decoration-color: var(--primary);
+        }
+    }
+}

@@ -1,0 +1,88 @@
+import fs from 'fs/promises';
+import path from 'path';
+import { Firestore } from '@google-cloud/firestore';
+import dotenv from 'dotenv';
+
+// Load env vars
+dotenv.config({ path: path.join(process.cwd(), '.env.local') });
+
+// Force local script to use the service account credentials in the root
+process.env.GOOGLE_APPLICATION_CREDENTIALS = path.join(process.cwd(), 'service-account.json');
+
+const db = new Firestore({
+    projectId: 'wizard-shop',
+    databaseId: 'glass-class-denver',
+});
+
+const CONTENT_PATH = path.join(process.cwd(), 'src', 'data', 'content.json');
+
+const newTeamData = [
+    {
+        name: 'Jon Wade',
+        label: 'Co-Founder / Owner',
+        role: 'Co-Founder, Master Artist & Instructor',
+        imageSrc: '/images/instructor-jon.png',
+        bio: [
+            'Jon Wade has over 15 years of experience in the art of glassblowing and is the founder of Denver-based glass company and studio, Wizard Glass.',
+            'He has trained with several experts in the field and has even been highlighted in The Flow Magazine. His professional but laid back attitude makes for a relaxing but informative and fun experience.'
+        ],
+        socials: {
+            instagram: 'https://www.instagram.com/glassclassdenver/',
+            email: 'info@glassclassdenver.com',
+            website: 'https://www.wizardglass.com'
+        }
+    },
+    {
+        name: 'Alan Gothard',
+        label: 'Co-Founder / Product',
+        role: 'Co-Founder & Product Lead',
+        imageSrc: '/images/studio-logo.png',
+        bio: [
+            'Alan Gothard leads product strategy, technology operations, and digital experience design at Glass Class Denver.',
+            'Focusing on UI/UX excellence and seamless backend operations, Alan shapes the platform to connect students with the art of glassblowing.'
+        ],
+        socials: {
+            email: 'info@glassclassdenver.com'
+        }
+    }
+];
+
+async function run() {
+    try {
+        console.log('1. Updating local content.json...');
+        const fileContent = await fs.readFile(CONTENT_PATH, 'utf-8');
+        const content = JSON.parse(fileContent);
+
+        content.draft.about.team = newTeamData;
+        content.live.about.team = newTeamData;
+
+        await fs.writeFile(CONTENT_PATH, JSON.stringify(content, null, 2), 'utf-8');
+        console.log('Local content.json updated successfully.');
+
+        console.log('2. Updating Firestore database...');
+        const docRef = db.collection('app_content').doc('main');
+        const doc = await docRef.get();
+
+        if (doc.exists) {
+            const data = doc.data();
+            const draftData = data?.draft_data || {};
+            const liveData = data?.live_data || {};
+
+            if (draftData.about) draftData.about.team = newTeamData;
+            if (liveData.about) liveData.about.team = newTeamData;
+
+            await docRef.set({
+                draft_data: draftData,
+                live_data: liveData,
+                updated_at: new Date().toISOString()
+            }, { merge: true });
+            console.log('Firestore updated successfully.');
+        } else {
+            console.log('Firestore main document not found, skipping DB update.');
+        }
+    } catch (error) {
+        console.error('Error bootstrapping team data:', error);
+    }
+}
+
+run();
