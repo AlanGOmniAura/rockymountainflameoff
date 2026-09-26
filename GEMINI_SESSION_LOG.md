@@ -1,14 +1,13 @@
-# Gemini Session Log
+# GEMINI_SESSION_LOG
 
-### Last 2 Tasks Completed
-1. Sanitized secrets from `fix-supabase-script.cjs` & `scripts/check-draft.ts` and added `env.yaml` to `.gitignore`.
-2. Initialized git repository and linked remote `AlanGOmniAura/rockymountainflameoff`.
+## 1. Last 2 tasks completed
+- Successfully containerized and deployed the updated application to Google Cloud Run production service `rockymountainflameoff` (revision `rockymountainflameoff-00032-2vf`) in project `wizard-shop` (`us-west1`).
+- Eliminated unnecessary AI slop copy, removed redundant video highlights box, brought the wrap-up heading inside the dark card to prevent sun disk bleaching, and scoped `bg.png` to the Hero area so the Slideshow, Gallery, and Sponsors render on dark zinc with 100% text contrast.
 
-### Current Active Task
-- Pushing sanitized git history to GitHub remote repository.
+## 2. Current active task
+- Generated comprehensive `GCP_DEPLOYMENT_NOTES.md` and preparing git repository to commit and push all code and documentation to GitHub remote `git@github.com:AlanGOmniAura/rockymountainflameoff.git` without modifying GCP.
 
-### 2 Helpful Workspace-Specific Reminders
-1. **No GCP Modification**: GCP deployment/resources must not be touched per user instruction.
-2. **GitHub Push Protection**: Keep credentials out of source control (`.env.local`, `env.yaml`, `sa.json`, `service-account.json`, `supabase-dump.json`).
-
+## 3. Workspace-specific reminders
+- Do not deploy to or alter GCP resources per explicit user instruction ("dont touch the GCP").
+- GitHub remote repository is `git@github.com:AlanGOmniAura/rockymountainflameoff.git`.
 
