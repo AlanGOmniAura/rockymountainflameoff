@@ -1,12 +1,12 @@
 # GEMINI_SESSION_LOG
 
 ## 1. Last 2 tasks completed
-- Eliminated unnecessary AI slop copy, removed redundant video highlights box, brought the wrap-up heading inside the dark card to prevent sun disk bleaching, and scoped `bg.png` to the Hero area so the Slideshow, Gallery, and Sponsors render on dark zinc with 100% text contrast.
-- Authored comprehensive `GCP_DEPLOYMENT_NOTES.md` and successfully pushed all production code, assets, and documentation to GitHub (`git@github.com:AlanGOmniAura/rockymountainflameoff.git` on `main`).
+- Discovered and downloaded the official "RMF 2026 Winners" document (`1ejqJUXGLFaLc6V464BQDhN0-feVYtxk58nykQ5RYhoY`) and parsed the updated competitor info document (`1RxoaF7NLO07V8F3lp_cQeyNcXAqmdDi8EKhDXairosk`).
+- Updated `src/data/entries.js` with official 1st Place ("Winner") and 2nd Place ("Runner Up") placements across all 8 competition categories and accurate cities/states across all 57 competitors. Verified with a clean production build (`npm run build`) and visual screenshot inspections of card grids and artist modals.
 
 ## 2. Current active task
-- Workspace synced with GitHub `main`; local dev server active on `http://localhost:5173/`, with GCP resources completely untouched.
+- Committing and pushing verified official winners, runners-up, and competitor geographic data to GitHub `main` (`AlanGOmniAura/rockymountainflameoff.git`), leaving GCP completely untouched.
 
 ## 3. Workspace-specific reminders
-- Do not deploy to or alter GCP resources per explicit user instruction ("dont touch the GCP").
-- GitHub remote repository `git@github.com:AlanGOmniAura/rockymountainflameoff.git` is up to date.
+- Strictly do not deploy to or alter GCP resources per explicit user instruction ("dont touch the GCP").
+- Local dev server is running on `http://localhost:5173/` (background task `task-1904`).
