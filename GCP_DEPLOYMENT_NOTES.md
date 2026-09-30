@@ -13,7 +13,7 @@
 | **GCP Project ID** | `wizard-shop` |
 | **GCP Region** | `us-west1` (The Dalles, Oregon) |
 | **Cloud Run Service** | `rockymountainflameoff` |
-| **Active Production Revision** | `rockymountainflameoff-00032-2vf` |
+| **Active Production Revision** | `rockymountainflameoff-00033-rdn` |
 | **Traffic Allocation** | 100% routed to active revision |
 | **Ingress Setting** | Allow all traffic (`--allow-unauthenticated`) |
 | **Container Port** | `8080` |
